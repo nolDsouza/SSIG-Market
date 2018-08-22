@@ -1,0 +1,12 @@
+<form>
+<div>
+	Username: <input type="text" name="username" #username>
+</div>
+<div>
+	Password: <input type="password" name="password" #password>
+</div>
+<input type="button" name="submit" value="Submit" (click)="Submit(username.value,password.value)">
+
+<p *ngIf="success;">IT WORKED</p>
+</form>
+

@@ -1,0 +1,17 @@
+Username: <input type = "text" #user>
+<br>
+First Name: <input type ="text" #first>
+<br>
+Last Name: <input type = "text" #last>
+<br>
+E-mail address: <input type = "email" #email>
+<br>
+Password: <input type = "password" #pass>
+<br>
+Confirm Password: <input type = "password" #pass2 (keyup)="checker(pass.value,pass2.value)">
+<br>
+<div *ngIf="change === 0">
+<p> passwords do not match </p>
+</div>
+<input type = "button" value="Register" (click)="register(user.value,first.value,last.value,email.value,pass.value,pass2.value)">
+<br>
