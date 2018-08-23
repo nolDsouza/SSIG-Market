@@ -1,0 +1,50 @@
+@font-face {
+    font-family: droidSerifItalic;
+    src: url(DroidSerif-Italic.ttf);
+}
+
+@font-face {
+    font-family: ABALC;
+    src: url(ABALC.ttf);
+}
+
+body{
+  background: #eee8d5;
+}
+.content {
+    max-width: 1200px;
+    margin: auto;
+}
+table{
+  width: 100%;
+  align-items: center;
+  text-align:center;
+  padding: 15px;
+}
+ th {
+  border: 1px solid black;
+    width: 100%;
+    align-items: center;
+    text-align:center;
+}
+nav,
+nav a{
+  font-size: 30px;
+  background: #bdb8a6;
+  font-family: ABALC;
+  color: black;
+  text-decoration: none;
+}
+
+main{
+    width: 100%;
+    align-items: center;
+    text-align:center;
+}
+footer{
+    width: 100%;
+    align-items: center;
+    text-align:center;
+    background: #bdb8a6;
+    font-family: droidSerifItalic;
+}
