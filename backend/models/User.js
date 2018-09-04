@@ -1,16 +1,29 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
+import moment from 'moment';
 
+const jwt = require('jsonwebtoken');
 const Schema = mongoose.Schema;
 const SALT_WORK_FACTOR = 10;
+const API_KEY = process.env.__SECRET__;
 
 let User = new Schema({
+  email: {
+    type: String,
+    required: true,
+    index: { unique: true }
+  },
   username: {
     type: String,
     required: true,
     index: { unique: true }
   },
-  email: {
+  firstname: {
+    type: String,
+    required: true,
+    index: { unique: true }
+  },
+  lastname: {
     type: String,
     required: true,
     index: { unique: true }
@@ -18,9 +31,7 @@ let User = new Schema({
   password: {
     type: String,
     required: true
-  },
-  bio: String,
-  image: String,
+  }
 });
 
 User.pre('save', function(next) {
@@ -43,5 +54,25 @@ User.pre('save', function(next) {
         });
     });
 });
+
+User.methods.comparePassword = function(password, callback) {
+  bcrypt.compare(password, this.password, (err, isMatch) => {
+    if (err) return callback(err);
+    callback(null, isMatch);
+  });
+}
+
+User.methods.generateJwt = function() {
+  var expiry = new Date();
+  expiry = moment(expiry).add(30, 'm').toDate();
+
+  return jwt.sign({
+    _id: this._id,
+    email: this.email,
+    firstname: this.firstname,
+    lastname: this.lastname,
+    exp: parseInt(expiry.getTime() / 1000),
+  }, API_KEY);
+}
 
 export default mongoose.model('User', User);

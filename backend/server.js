@@ -14,7 +14,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Connect to the database
-mongoose.connect('mongodb://localhost:27017/sharelionDatabase');
+mongoose.connect(process.env.__DATABASE__);
 
 const connection = mongoose.connection;
 // Event listener
@@ -91,7 +91,7 @@ router.route('/users').get((req, res) => {
   });
 });
 
-router.route('/users/:id').get((req, res) => {
+router.route('/dashboard/:id').get((req, res) => {
   User.findById(req.params.id, (err, user) => {
     if (err)
       console.log(err);
@@ -100,7 +100,7 @@ router.route('/users/:id').get((req, res) => {
   });
 });
 
-router.route('/users/add').post((req, res) => {
+router.route('/register').post((req, res) => {
   let user = new User(req.body);
   user.save()
     .then(User => {
@@ -112,7 +112,40 @@ router.route('/users/add').post((req, res) => {
     });
 });
 
-router.route('/users/update/:id').post((req, res)=> {
+router.route('/login').post((req, res) => {
+  if (!req.body.id || !req.body.password) {
+    res.json('Please input username and password');
+  } else {
+    var query = {
+      $or: [
+        { username: req.body.id },
+        { email: req.body.id }
+      ]
+    };
+    // fetch user and apply validation
+    User.findOne(query, (err, user) => {
+      // unforseen exceptions
+      if (err) res.json(err);
+      // invalid username
+      else if (!user) {
+        res.json('Incorrect username or password provided');
+      // valid username
+      } else {
+        user.comparePassword(req.body.password, (err, isMatch) => {
+          if (err) res.json(err);
+          else if (isMatch === true) {
+            res.json(user);
+          } else {
+            res.json('Incorrect username or password provided');
+          }
+        });
+      }
+    });
+  }
+  
+});
+
+router.route('/users/update/:id').post((req, res) => {
   User.findById(req.params.id, (err, user) => {
     if (!user)
       return next(new Error('Could not load document'));
@@ -130,7 +163,7 @@ router.route('/users/update/:id').post((req, res)=> {
   });
 });
 
-router.route('/users/reset_password/:id').post((req, res)=> {
+router.route('/users/reset_password/:id').post((req, res) => {
   User.findById(req.params.id, (err, user) => {
     if (!user)
       return next(new Error('Could not load document'));
@@ -145,13 +178,17 @@ router.route('/users/reset_password/:id').post((req, res)=> {
   });
 });
 
-router.route('/users/delete/:id').get((req, res)=> {
+router.route('/users/delete/:id').get((req, res) => {
   User.findByIdAndRemove({_id: req.params.id}, (err, user) => {
     if (err)
       res.json(err);
     else
       res.json('Removed successfully');
   });
+});
+
+router.route('/env').get((req, res) => {
+  res.json(process.env)
 });
 
 
