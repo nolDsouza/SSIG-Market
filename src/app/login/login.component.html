@@ -1,12 +1,6 @@
-<form>
-<div>
-	Username: <input type="text" name="username" #username>
-</div>
-<div>
-	Password: <input type="password" name="password" #password>
-</div>
-<input type="button" name="submit" value="Submit" (click)="Submit(username.value,password.value)">
-
-<p *ngIf="success;">IT WORKED</p>
-</form>
+<table align="center">
+<tr><td>Username: </td><td><input type="text" name="username" #username></td></tr>
+<tr><td>Password: </td><td><input type="password" name="password" #password></td></tr>
+<tr><td colspan="2"><input type="button" name="submit" value="Submit" (click)="Submit(username.value,password.value)"></td></tr>
+</table>
 

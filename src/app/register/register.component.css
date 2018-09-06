@@ -1,6 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+table{
+	border: 1px solid black;
+	border-radius: 15px;
+	text-align: center;
+}
+
+td{
+	padding: 24px 10px;
+	font-family: 'Oswald', sans-serif;
+}
+
 input{
   color: #369;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size: 100%;
   text-align: center;
 }

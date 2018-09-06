@@ -1,17 +1,14 @@
-Username: <input type = "text" #user>
-<br>
-First Name: <input type ="text" #first>
-<br>
-Last Name: <input type = "text" #last>
-<br>
-E-mail address: <input type = "email" #email>
-<br>
-Password: <input type = "password" #pass>
-<br>
-Confirm Password: <input type = "password" #pass2 (keyup)="checker(pass.value,pass2.value)">
-<br>
+<table align='center'>
+<tr><td>Username: </td><td><input type = "text" #user></td></tr>
+<tr><td>First Name: </td><td><input type ="text" #first></td></tr>
+<tr><td>Last Name: </td><td><input type = "text" #last></td></tr>
+<tr><td>E-mail address: </td><td><input type = "email" #email></td></tr>
+<tr><td>Password: </td><td><input type = "password" #pass></td></tr>
+<tr><td>Confirm Password: </td><td><input type = "password" #pass2 (keyup)="checker(pass.value,pass2.value)"></td></tr>
+
 <div *ngIf="change === 0">
-<p> passwords do not match </p>
+<tr><td colspan="2"><p> Passwords Don't Match </p></td></tr>
 </div>
-<input type = "button" value="Register" (click)="register(user.value,first.value,last.value,email.value,pass.value,pass2.value)">
-<br>
+
+<tr><td colspan="2"><input type = "button" value="Register" (click)="register(user.value,first.value,last.value,email.value,pass.value,pass2.value)"></td></tr>
+</table>
