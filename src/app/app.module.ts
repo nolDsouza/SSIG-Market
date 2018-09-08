@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,10 +19,10 @@ import { TransactionAccountService } from './transaction-account.service';
 const routes: Routes = [
   { path: 'create', component: CreateComponent},
   { path: 'edit/:id', component: EditComponent},
-  { path: 'list', component: ListComponent},
+  { path: 'dashboard', component: ListComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: '', redirectTo: 'list', pathMatch: 'full'}
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full'}
 ];
 
 @NgModule({
@@ -36,6 +37,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
     MatToolbarModule

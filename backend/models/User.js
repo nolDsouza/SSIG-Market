@@ -62,7 +62,7 @@ User.methods.comparePassword = function(password, callback) {
   });
 }
 
-User.methods.generateJwt = function() {
+User.methods.generateJWT = function() {
   var expiry = new Date();
   expiry = moment(expiry).add(30, 'm').toDate();
 

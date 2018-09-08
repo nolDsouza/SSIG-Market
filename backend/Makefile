@@ -1,7 +1,7 @@
+API_PORT=4000
 DB_PORT=27017
-APP_PORT=4000
 DB_URL='mongodb://localhost:${DB_PORT}/sharelionDatabase'
-APP_URL='http://localhost:${APP_PORT}'
+API_URL='http://localhost:${API_PORT}'
 SECRET=$(shell node KEYGEN)
 default:
-	__DATABASE__=$(DB_URL) __AUTHORITY__=$(APP_URL) __SECRET__=$(SECRET) npm run dev
+	 __DATABASE__=$(DB_URL) __API__=$(API_URL) __SECRET__=$(SECRET) npm run dev

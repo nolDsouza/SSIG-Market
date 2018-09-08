@@ -1,4 +1,5 @@
 import express from 'express';
+import passport from 'passport';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
@@ -6,12 +7,17 @@ import mongoose from 'mongoose';
 import TransactionAccount from './models/TransactionAccount.js';
 import User from './models/User.js';
 
+require('./config/passport');
+
 const app = express();
 const router = express.Router();
+var usersRouter = require('./routes/users');
 
 // Connecting to middleware
 app.use(cors());
 app.use(bodyParser.json());
+app.use(passport.initialize());
+app.use('/', usersRouter);
 
 // Connect to the database
 mongoose.connect(process.env.__DATABASE__);
@@ -100,19 +106,7 @@ router.route('/dashboard/:id').get((req, res) => {
   });
 });
 
-router.route('/register').post((req, res) => {
-  let user = new User(req.body);
-  user.save()
-    .then(User => {
-      res.status(200).json({'user': 'Added successfully'});
-
-    })
-    .catch(err=> {
-      res.status(400).send('Failed to create new record'); 
-    });
-});
-
-router.route('/login').post((req, res) => {
+/*router.route('/login').post((req, res) => {
   if (!req.body.id || !req.body.password) {
     res.json('Please input username and password');
   } else {
@@ -144,7 +138,7 @@ router.route('/login').post((req, res) => {
   }
   
 });
-
+*/
 router.route('/users/update/:id').post((req, res) => {
   User.findById(req.params.id, (err, user) => {
     if (!user)
