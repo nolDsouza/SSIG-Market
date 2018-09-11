@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { User } from './models/user.model';
+import { User } from '../models/user.model';
 
 interface TokenResponse {
   token: string;
@@ -48,8 +48,8 @@ export class AuthenticationService {
     if (method === 'post') {
       base = this.http.post(`${api}/${type}`, user);
     } else {
-      base = this.http.get(`/${type}`,
-        { headers: { Authorization: `Bearer ${this.getToken()}` }});
+      console.log(this.getToken());
+      base = this.http.get(`${api}/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` }});
     }
 
     const req = base.pipe(map((data: TokenResponse) => {

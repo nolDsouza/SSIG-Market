@@ -1,5 +1,8 @@
+import express from 'express';
 import passport from 'passport';
 import mongoose from 'mongoose';
+import path from 'path';
+import bodyParser from 'body-parser';
 
 const LocalStrategy = require('passport-local').Strategy;
 const User = mongoose.model('User');
@@ -28,7 +31,7 @@ passport.use(new LocalStrategy({
         if (isMatch === false) {
           return callback(null, false, fmsg);  
         }
-        // return full udrt when credentials are correct (not authorised yet)
+        // return full user when credentials are correct (not authorised yet)
         return callback(null, user);
       });
     });

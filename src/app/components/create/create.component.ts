@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TransactionAccountService } from '../../transaction-account.service';
+import { TransactionAccountService } from '../../services/transaction-account.service';
 
 @Component({
   selector: 'app-create',

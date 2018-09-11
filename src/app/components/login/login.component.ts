@@ -2,7 +2,7 @@ import { Component, OnInit, Injectable } from '@angular/core';
 import {Router} from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { AuthenticationService, TokenPayload } from '../authentication.service';
+import { AuthenticationService, TokenPayload } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-login',
