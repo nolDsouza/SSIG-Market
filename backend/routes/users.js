@@ -1,12 +1,18 @@
 import express from 'express';
+import jwt from 'express-jwt';
+
 // express router middleware
 const router = express.Router();
 
-const auth = require('./index');
 // require controllers
 const UserController = require('../controllers/user.controller');
 
-/// USER ROUTES ///
+var auth = jwt({
+  secret: process.env.__SECRET__,
+  userProperty: 'payload'
+});
+
+// USER ROUTES 
 
 // POST request for registering a new user
 router.post('/register', UserController.register); 
@@ -15,6 +21,6 @@ router.post('/register', UserController.register);
 router.post('/login', UserController.login);
 
 // Get request for user details
-//router.get('/dashboard', auth, UserController.dashboard);
+router.get('/dashboard', auth, UserController.dashboard);
 
 module.exports = router;
