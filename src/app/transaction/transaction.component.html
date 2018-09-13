@@ -1,0 +1,5 @@
+<table *ngFor='let t of allT'>
+		<tr *ngIf = 't.username === "Test"'>
+			<td><p>COMPANY: {{t.companycode}}</p></td><td><p>SHARES: {{t.shares}}</p></td><td><p>PRICE(PER SHARE): {{t.shareprice}}</p></td><td><p>COST: {{t.cost}}</p></td>
+		</tr>
+</table>

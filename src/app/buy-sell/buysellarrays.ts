@@ -5,6 +5,7 @@ export class UserBuys {
 }
 
 export class CompanyShares {
+	companyname:string;
 	companycode: string;
 	shareprice: number;
 	numshares: number;
@@ -15,6 +16,6 @@ export const UserBought: UserBuys[] = [
 ];
 
 export const Companies: CompanyShares[]= [
-{companycode: 'ASX', shareprice:1.574, numshares:123554},
-{companycode: 'TST', shareprice:1.324, numshares:1134}
+{companyname: 'Australian Securities Exchange', companycode: 'ASX', shareprice:1.574, numshares:123554},
+{companyname: 'Test Company', companycode: 'TST', shareprice:1.324, numshares:1134}
 ];
