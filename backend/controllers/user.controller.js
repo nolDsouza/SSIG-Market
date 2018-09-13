@@ -17,13 +17,15 @@ module.exports.register = function(req, res) {
 module.exports.login = function(req, res) {
   passport.authenticate('local', (err, user, info) => {
     var token;
-
+    // Unexpected error
     if (err) return res.status(404).json(err);
 
     if (user) {
+      // Correct password
       token = user.generateJWT();
       res.status(200).json({ "token": token });
     } else {
+      // Incorrect password
       res.status(401).json(info);
     }
   })(req, res);

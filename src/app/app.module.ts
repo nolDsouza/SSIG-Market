@@ -16,6 +16,7 @@ import { EditComponent } from './components/edit/edit.component';
 
 import { TransactionAccountService } from './services/transaction-account.service';
 import { AuthGuardService } from './guards/auth-guard.service';
+import { UiModule } from './modules/ui/ui.module';
 
 const routes: Routes = [
   { path: 'create', component: CreateComponent},
@@ -41,7 +42,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    MatToolbarModule
+    MatToolbarModule,
+    UiModule
   ],
   providers: [
     TransactionAccountService,
