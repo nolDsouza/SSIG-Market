@@ -1,23 +1,44 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import {Router} from '@angular/router';
-import { DOCUMENT } from '@angular/common';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { AuthenticationService, TokenPayload } from '../authentication.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
-user = "Test";
-pass = "$Test123";
-  constructor() { }
+  loginForm: FormGroup;
+  submitted = false;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private auth: AuthenticationService,
+    private router: Router) { }
 
   ngOnInit() {
-	  }
+    this.loginForm = this.formBuilder.group({
+      userfield: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(7)]]
+    });
+  }
 
-  Submit(username:string,password:string): void{
-  
-	  if(username === this.user && password === this.pass){
-		  window.location.href = 'https://www.rmit.edu.au/'; //Later link
-	  }
+  get f() { return this.loginForm.controls; }
+
+  onSubmit() {
+    this.submitted = true;
+
+    if (this.loginForm.invalid === true) {
+      return;
+    }
+
+    this.auth.login(this.loginForm.value as TokenPayload).subscribe(() => {
+      this.router.navigateByUrl('/dashboard');
+    }, (err) => {
+      console.error(err);
+    });
   }
 }
