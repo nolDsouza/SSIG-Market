@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
-
   ngOnInit() {
   }
 
+  public logout() {
+    localStorage.removeItem('sharelion-token');
+    location.reload();
+  }
 }

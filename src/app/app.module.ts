@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
-import { MatToolbarModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -15,15 +14,17 @@ import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './components/edit/edit.component';
 
 import { TransactionAccountService } from './services/transaction-account.service';
-import { AuthGuardService } from './guards/auth-guard.service';
-import { UiModule } from './modules/ui/ui.module';
+import { AutoLoginService } from './guards/auto-login.service';
+
+import { DashboardModule } from './dashboard/dashboard.module';
+import { SharedModule } from './shared/shared.module';
 
 const routes: Routes = [
   { path: 'create', component: CreateComponent},
   { path: 'edit/:id', component: EditComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent},
-  { path: 'dashboard', component: ListComponent, canActivate: [AuthGuardService] },
+  { path: 'login', component: LoginComponent, canActivate: [AutoLoginService]},
+  { path: 'register', component: RegisterComponent, canActivate: [AutoLoginService]},
+  { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule' },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full'}
 ];
 
@@ -34,7 +35,7 @@ const routes: Routes = [
     RegisterComponent,
     ListComponent,
     CreateComponent,
-    EditComponent
+    EditComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,12 +43,12 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    MatToolbarModule,
-    UiModule
+    DashboardModule,
+    SharedModule,
   ],
   providers: [
     TransactionAccountService,
-    AuthGuardService
+    AutoLoginService
   ],
   bootstrap: [AppComponent]
 })
