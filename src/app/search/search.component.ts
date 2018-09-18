@@ -6,7 +6,7 @@ import {Companies, CompanyShares} from '../buy-sell/buysellarrays';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-Companies = CompanyShares;
+companies = Companies;
   constructor() { }
 
   ngOnInit() {

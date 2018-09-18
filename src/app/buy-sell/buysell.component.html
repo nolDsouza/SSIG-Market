@@ -1,4 +1,24 @@
 <table>
-<tr><td>ASX PRICE 1.574</td><td><input type='button' name='BUY' value ='BUY ASX' (click)='Buy("ASX", 14)'></td><td><input type='button' name='BUY' value ='SELL ASX' (click)='Sell("ASX", 6)'></td></tr>
-<tr><td>TST PRICE 1.324</td><td><input type='button' name='BUY' value ='BUY TST' (click)='Buy("TST", 25)'></td><td><input type='button' name='BUY' value ='SELL TST' (click)='Sell("TST", 12)'></td></tr>
+<tr><td style='border:1px solid black'>Please select the Trading Account</td>
+	<td><select #TA>
+	<option value="TA1">Trading Account 1</option>
+	<option value="TA2">Trading Account 2</option>
+	<option value="TA3">Trading Account 3</option>
+	<option value="TA4">Trading Account 4</option>
+	<option value="TA5">Trading Account 5</option>
+	</select></td></tr>
+<div class="Stocks">
+<tr><td>ASX PRICE 1.574</td><td></tr>
+<tr><td><input type='number' id='amount' min='1' #ASXamount></td>	
+	<td><input type='button' name='BUY' value ='BUY ASX' (click)='Buy("ASX", ASXamount.value,TA.value)'></td>
+	<td><input type='button' name='SELL' value ='SELL ASX' (click)='Sell("ASX", ASXamount.value,TA.value)'></td>
+</tr>
+</div>
+<div class="Stocks">
+<tr><td>TST PRICE 1.351</td><td></tr>
+<tr><td><input type='number' id='amount' min='1' #TSTamount></td>	
+	<td><input type='button' name='BUY' value ='BUY ASX' (click)='Buy("TST", TSTamount.value,TA.value)'></td>
+	<td><input type='button' name='SELL' value ='SELL ASX' (click)='Sell("TST", TSTamount.value,TA.value)'></td>
+</tr>
+</div>
 </table>

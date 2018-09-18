@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import {Companies, CompanyShares} from './buy-sell/buysellarrays';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-login';
+  companies = Companies;
 }
+

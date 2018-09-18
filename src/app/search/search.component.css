@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+.List {
+	list-style-type: none;
+	padding: 15px 0px;
+	width: 40em;
+	text-align: left;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.List li{
+	cursor: pointer;
+	padding: 15px 5px;
+	background-color: rgba(225, 225, 208,0.5);
+}
+.code{
+	background-color: #607D8B;
+	padding: 10px 10px;
+	display: inline-block;
+	width:50px;
+	border-radius: 4px;
+	text-align: center;
+}
+.titles, .spacing{
+	display: inline;
+	font-weight: bold;
+}
+.spacing{
+	padding: 0px 20px;
+}

@@ -22,7 +22,7 @@ validity: boolean;
 			  }
 		  }
 		  if (this.validity != false){
-			 UserData.push({username: username, password: password, firstname: firstname, lastname: lastname, email:email});
+			 UserData.push({username: username, password: password, accounts: [{accountID: 'TA1', accountValue: 12}],firstname: firstname, lastname: lastname, email:email});
 		  }
 	  }
 	  console.log(UserData);

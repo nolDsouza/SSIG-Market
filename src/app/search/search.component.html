@@ -1,9 +1,8 @@
-<!-- <label>Search: <input ng-Model="searchText"></label>
-<table id="searchTextResults">
-  <tr><th>Company Code</th><th>Share Value</th></tr>
-  <tr *ngFor="let C of Companies | filter:searchText">
-    <td>{{C.companycode}}</td>
-    <td>{{C.shareprice}}</td>
-  </tr>
-</table>
- -->
+<input [(ngModel)]="searchText" placeholder="search text goes here">
+<ul class="List">
+	<div *ngFor="let c of companies" class="list">
+		<li *ngIf="c.companyname.includes(searchText) && searchText != ''">
+		<span class="code">{{c.companycode}}</span><p class="spacing">|</p><p class="titles">Name: </p>{{c.companyname}}<p class="spacing">|</p><p class="titles">Share Price: </p>{{c.shareprice}}
+		</li>
+	</div>
+</ul>
