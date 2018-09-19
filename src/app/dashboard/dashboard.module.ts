@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
@@ -10,12 +11,14 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { TestComponent } from './test/test.component';
+import { ShareSummaryComponent } from './share-summary/share-summary.component';
 
 @NgModule({
   imports: [
     CommonModule,
     DashboardRoutingModule,
     SharedModule,
+    ReactiveFormsModule
   ],
   declarations: [
     LayoutComponent,
@@ -24,6 +27,7 @@ import { TestComponent } from './test/test.component';
     ToolbarComponent,
     HomeComponent,
     TestComponent,
+    ShareSummaryComponent,
   ],
   exports: [
     HeaderComponent,

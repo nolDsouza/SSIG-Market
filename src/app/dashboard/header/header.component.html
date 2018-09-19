@@ -6,10 +6,10 @@
             <a class="navbar-brand" href="./"><img src="favicon.ico" alt="Logo"></a>
         </div>
   <a class="navbar-brand" href="/">Sharelion</a>
-    <form class ="form-inline ml-auto">
+    <form class ="form-inline ml-auto" [formGroup]="searchForm" (ngSubmit)="search()">
         <div class="navbar-expand mr-auto">
         </div>
-        <input class="form-control" type="text" placeholder="Search for shares">
+        <input class="form-control" formControlName="keyword" type="text" placeholder="Search for shares">
         <button type="submit" class="btn btn-outline-warning ml-3">
           Search
         </button>

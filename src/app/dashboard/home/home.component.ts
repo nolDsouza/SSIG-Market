@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.auth.getUser() as User;
-    console.log(this.auth.getUser());
 
     this.companies = [
       'NAB',

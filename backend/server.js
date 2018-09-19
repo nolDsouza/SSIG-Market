@@ -12,12 +12,14 @@ require('./config/passport');
 const app = express();
 const router = express.Router();
 var usersRouter = require('./routes/users');
+var companiesRouter = require('./routes/companies');
 
 // Connecting to middleware
 app.use(cors());
 app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use('/', usersRouter);
+app.use('/companies', companiesRouter);
 
 // Connect to the database
 mongoose.connect(process.env.__DATABASE__);
@@ -105,6 +107,7 @@ router.route('/dashboard/:id').get((req, res) => {
       res.json(user);
   });
 });
+
 
 /*router.route('/login').post((req, res) => {
   if (!req.body.id || !req.body.password) {
