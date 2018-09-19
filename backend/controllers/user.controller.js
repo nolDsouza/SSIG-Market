@@ -3,6 +3,8 @@ import User from '../models/User';
 
 module.exports.register = function(req, res) {
   let user = new User(req.body);
+  user.balance = 1000000;
+  user.accounts = 'empty';
 
   user.save()
     .then(User => {
