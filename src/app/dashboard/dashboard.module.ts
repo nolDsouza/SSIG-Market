@@ -8,18 +8,27 @@ import { FooterComponent } from './footer/footer.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 
 import { SharedModule } from '../shared/shared.module';
+import { HomeComponent } from './home/home.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    SharedModule
+    SharedModule,
   ],
   declarations: [
     LayoutComponent,
     HeaderComponent,
     FooterComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    HomeComponent,
+    TestComponent,
+  ],
+  exports: [
+    HeaderComponent,
+    ToolbarComponent,
+    FooterComponent
   ],
 })
 export class DashboardModule { }

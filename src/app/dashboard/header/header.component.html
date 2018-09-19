@@ -1,13 +1,20 @@
-<nav class="navbar navbar-dark bg-dark mb-5">
-  <a class="navbar-brand" href="/">Angular & Bootstrap</a>
-  <div class="navbar-expand mr-auto">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="#">Home</a>
-      <a class="nav-item nav-link" href="#">About</a>
-      <a class="nav-item nav-link" href="#">Contact</a>
-    </div>
-  </div>
-      <button (click)="logout()">
-        sign out
+<nav class="navbar navbar-dark">
+        <div class="navbar-header">
+            <button class="navbar-toggler" id="sidebarCollapse" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="./"><img src="favicon.ico" alt="Logo"></a>
+        </div>
+  <a class="navbar-brand" href="/">Sharelion</a>
+    <form class ="form-inline ml-auto">
+        <div class="navbar-expand mr-auto">
+        </div>
+        <input class="form-control" type="text" placeholder="Search for shares">
+        <button type="submit" class="btn btn-outline-warning ml-3">
+          Search
+        </button>
+    </form>
+      <button type="button" class="btn btn-outline-warning ml-3" (click)="logout()">
+        Sign out
       </button>
 </nav>

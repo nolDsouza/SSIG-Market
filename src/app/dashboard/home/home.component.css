@@ -1,0 +1,42 @@
+.main {
+    width: 100%;
+}
+
+.row {
+    width: 100%;
+}
+
+.card {
+    min-width: 18rem;
+    border-radius: 12px;
+}
+
+.color-block {
+    color: #fff;
+    border-radius: 12px;
+}
+
+.z-depth-2 {
+    -webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
+}
+
+.ml-auto, .mx-auto {
+    margin-left: auto!important;
+}
+
+.cloud-nine-gradient {
+    background-image: -webkit-linear-gradient(40deg,#ff6ec4,#7873f5);
+}
+
+.big-money-gradient {
+    background-image: -webkit-linear-gradient(40deg,#2096ff,#05ffa3);
+}
+
+.yellow-mellow-gradient {
+    background-image: -webkit-linear-gradient(40deg,#ffd86f,#fc6262);
+}
+
+.morpheus-ponens-gradient {
+    background-image: -webkit-linear-gradient(40deg, #30cfd0 0%, #330867 100%);
+}
