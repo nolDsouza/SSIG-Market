@@ -3,6 +3,8 @@ export interface User {
   username: string;
   firstname: string;
   lastname: string;
+  balance: number;
+  accounts: string;
   exp: number;
   iat: number;
 }

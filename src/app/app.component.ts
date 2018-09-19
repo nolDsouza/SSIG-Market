@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { AuthenticationService } from './services/authentication.service';
 
 @Component({
@@ -10,9 +11,4 @@ export class AppComponent {
   title = 'sharelion';
 
   constructor(private auth: AuthenticationService) {}
-
-  loggedOn() {
-    return this.auth.loggedOn();
-  }
-
 }

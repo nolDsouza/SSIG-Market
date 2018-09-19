@@ -14,6 +14,8 @@ export interface TokenPayload {
   username: string;
   firstname: string;
   lastname: string;
+  balance: number;
+  accounts: string;
   email: string;
   password: string;
 }

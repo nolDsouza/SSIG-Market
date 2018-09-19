@@ -16,8 +16,8 @@ import { EditComponent } from './components/edit/edit.component';
 import { TransactionAccountService } from './services/transaction-account.service';
 import { AutoLoginService } from './guards/auto-login.service';
 
-import { DashboardModule } from './dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 const routes: Routes = [
   { path: 'create', component: CreateComponent},
