@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 
+import { DashboardModule } from './dashboard/dashboard.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -13,18 +14,16 @@ import { ListComponent } from './components/list/list.component';
 import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './components/edit/edit.component';
 
-import { TransactionAccountService } from './services/transaction-account.service';
 import { AutoLoginService } from './guards/auto-login.service';
 
 import { SharedModule } from './shared/shared.module';
-import { DashboardModule } from './dashboard/dashboard.module';
 
 const routes: Routes = [
+  { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
   { path: 'create', component: CreateComponent},
   { path: 'edit/:id', component: EditComponent},
   { path: 'login', component: LoginComponent, canActivate: [AutoLoginService]},
   { path: 'register', component: RegisterComponent, canActivate: [AutoLoginService]},
-  { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule' },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full'}
 ];
 
@@ -47,7 +46,6 @@ const routes: Routes = [
     SharedModule,
   ],
   providers: [
-    TransactionAccountService,
     AutoLoginService
   ],
   bootstrap: [AppComponent]

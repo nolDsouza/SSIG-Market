@@ -1,0 +1,9 @@
+<!-- MAIN CONTENT-->
+<main>
+  <div class="row-fluid d-flex justify-content-center mt-5 ml-5 mb-3">
+    <h2> Your name {{user.firstname + ' ' + user.lastname}} </h2>
+    <br>
+    <h3> Account name: {{accounts.name}}  Balance: {{accounts.balance}} </h3>
+  </div>
+  <button (click)="onClick()" type="button" class="btn btn-outline-warning ml-3">Click me</button>
+</main>

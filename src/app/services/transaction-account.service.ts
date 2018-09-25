@@ -15,7 +15,7 @@ export class TransactionAccountService {
   }
 
   getTransactionAccountById(id) {
-    return this.http.get(`${this.uri}/transaction_accounts/${id}`);
+    return this.http.get(`${this.uri}/accounts/${id}`);
   }
 
   addTransactionAccount(name, owner, balance, shares, value, description) {
