@@ -1,3 +1,15 @@
-<p>
-  share-summary works!
-</p>
+<div class="jumbotron d-flex justify-content-center mt-5 ml-5 mb-3">
+  <h2>{{company.asx_code + "-" + company.name}}</h2>
+  <div class="mt-5">
+    <h3>{{company.industry}}</h3>
+  </div>
+</div>
+<div class="row-fluid d-flex justify-content-center">
+  <h3>Price = {{sharePrice}}</h3>
+</div>
+<div class="row-fluid d-flex justify-content-center mt-5 ml-5 mb-3">
+  <form class ="form-inline ml-auto" [formGroup]="buyForm" (ngSubmit)="buy()">
+    <input class="form-control" formControlName="keyword" type="number" value="1" id="quantity">
+  </form>
+  <button type="button" class="btn btn-outline-warning ml-3">Purchase</button>
+</div>

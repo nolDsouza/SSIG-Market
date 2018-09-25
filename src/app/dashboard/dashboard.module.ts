@@ -10,7 +10,6 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 
 import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from './home/home.component';
-import { TestComponent } from './test/test.component';
 import { ShareSummaryComponent } from './share-summary/share-summary.component';
 
 @NgModule({
@@ -26,7 +25,6 @@ import { ShareSummaryComponent } from './share-summary/share-summary.component';
     FooterComponent,
     ToolbarComponent,
     HomeComponent,
-    TestComponent,
     ShareSummaryComponent,
   ],
   exports: [

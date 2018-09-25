@@ -49,6 +49,22 @@ module.exports.dashboard = function(req, res) {
   }
 };
 
+module.exports.buy = function(req, res) {
+    User.findById(req.params.id, (err, user) => {
+    if (!user)
+      return next(new Error('Could not load document'));
+    else {
+      user.balance = req.body.balance;
+
+      user.save().then(user => {
+        res.json('Update done'); 
+      }).catch(err=> {
+        res.status(400).send('Update failed'); 
+      });
+    }
+  });
+};
+
 /*router.route('/transaction_accounts/:id').get((req, res) => {
   TransactionAccount.findById(req.params.id, (err, transaction_account) => {
     if (err)

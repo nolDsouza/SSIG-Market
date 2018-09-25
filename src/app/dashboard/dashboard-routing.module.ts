@@ -3,12 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LayoutComponent } from './layout/layout.component';
 import { HomeComponent } from './home/home.component';
-import { TestComponent } from './test/test.component';
+import { ShareSummaryComponent } from './share-summary/share-summary.component';
 
 import { AuthGuardService } from '../guards/auth-guard.service';
 
 const routes: Routes = [
-  { path: 'dashboard', component: HomeComponent, canActivate: [AuthGuardService] }
+  { path: 'dashboard', component: HomeComponent, canActivate: [AuthGuardService] },
+  { path: 'share-summary/:company', component: ShareSummaryComponent, canActivate: [AuthGuardService] }
 ];
 
 @NgModule({

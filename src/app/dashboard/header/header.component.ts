@@ -33,7 +33,9 @@ export class HeaderComponent implements OnInit {
     console.log(this.searchForm.value.keyword);
     this.companySearch.getCompanyByKeyword(this.searchForm.value.keyword).subscribe((res) => {
       const company = res as Company;
-      this.router.navigateByUrl(`/dashboard`);
+      if (company) {
+        this.router.navigateByUrl(`/share-summary/${company.asx_code}`);
+      }
     }, (err) => {
       console.error(err);
     });
