@@ -11,11 +11,12 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { ShareSummaryComponent } from './share-summary/share-summary.component';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
   imports: [
-    CommonModule,
     DashboardRoutingModule,
+    CommonModule,
     SharedModule,
     ReactiveFormsModule
   ],
@@ -26,6 +27,7 @@ import { ShareSummaryComponent } from './share-summary/share-summary.component';
     ToolbarComponent,
     HomeComponent,
     ShareSummaryComponent,
+    AccountComponent,
   ],
   exports: [
     HeaderComponent,

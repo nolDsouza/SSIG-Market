@@ -14,12 +14,12 @@ import { ListComponent } from './components/list/list.component';
 import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './components/edit/edit.component';
 
-import { TransactionAccountService } from './services/transaction-account.service';
 import { AutoLoginService } from './guards/auto-login.service';
 
 import { SharedModule } from './shared/shared.module';
 
 const routes: Routes = [
+  { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
   { path: 'create', component: CreateComponent},
   { path: 'edit/:id', component: EditComponent},
   { path: 'login', component: LoginComponent, canActivate: [AutoLoginService]},
@@ -47,7 +47,6 @@ const routes: Routes = [
     SharedModule,
   ],
   providers: [
-    TransactionAccountService,
     AutoLoginService
   ],
   bootstrap: [AppComponent]

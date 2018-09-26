@@ -21,18 +21,13 @@ let User = new Schema({
   firstname: {
     type: String,
     required: true,
-    index: { unique: true }
   },
   lastname: {
     type: String,
     required: true,
-    index: { unique: true }
-  },
-  balance: {
-    type: Number
   },
   accounts: {
-    type: String
+    type: Array
   },
   password: {
     type: String,

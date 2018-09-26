@@ -1,11 +1,16 @@
 import passport from 'passport';
 import User from '../models/User';
+import TransactionAccount from '../models/TransactionAccount';
 
 module.exports.register = function(req, res) {
   let user = new User(req.body);
-  user.balance = 1000000;
-  user.accounts = 'empty';
+  user.accounts = [];
 
+  new TransactionAccount().save((err, account) => {
+   user.accounts.push(account.id);
+   if (err) return res.status(404).json(err);
+  });
+ 
   user.save()
     .then(User => {
       var token = user.generateJWT();
