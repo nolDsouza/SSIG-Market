@@ -3,11 +3,7 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 let Transaction = new Schema({
-  is_buying: {
-    type: Boolean,
-    default: true
-  },
-  account_name: {
+  user_id: {
     type: String,
     required: true
   },

@@ -1,14 +1,26 @@
 import Transaction from '../models/Transaction';
+import TransactionAccount from '../models/TransactionAccount.js';
 
-module.exports.create = function(req, res) {
-  let company = new Company(req.body);
-  company.save()
+module.exports.buy = function(req, res) {
+  let transaction = new Transaction(req.body);
+  TransactionAccount.findById(req.body.account_id, (err, account) => {
+    if (err) return res.status(404).json(err);
+    let price = transaction.value * transaction.amount;
+    let stock = account.shares[transaction.asx_code] || 0;
+    stock += transaction.amount;
+    account.shares[transaction.asx_code] = stock;
+    account.balance -= price;
+    if (account.balance < 0) return res.status(400).send('insufficient funds');
+    return res.json(account);
+  });
+
+  /*company.save()
     .then(company => {
       res.status(200).json({'company': 'Added successfully'});
     })
     .catch(err=> {
       res.status(400).send('Failed to create new record'); 
-    });
+    });*/
 };
 
 module.exports.read = function(req, res) {

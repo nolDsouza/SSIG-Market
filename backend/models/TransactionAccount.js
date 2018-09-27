@@ -1,19 +1,21 @@
 import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
+const init_name = 'default';
 const init_value = 1000000;
 
 let TransactionAccount = new Schema({
   name: {
     type: String,
-    default: 'default'
+    default: init_name,
   },
   balance: {
     type: Number,
     default: init_value
   },
   shares: {
-    type: Array
+    type: Schema.Types.Mixed,
+    default: {}
   },
   dateCreated: { 
     type: Date, 

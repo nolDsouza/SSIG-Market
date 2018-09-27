@@ -5,10 +5,10 @@ import TransactionAccount from '../models/TransactionAccount';
 module.exports.register = function(req, res) {
   let user = new User(req.body);
   user.accounts = [];
-
+  // save the user default account
   new TransactionAccount().save((err, account) => {
-   user.accounts.push(account.id);
    if (err) return res.status(404).json(err);
+   user.accounts.push(account.id);
   });
  
   user.save()

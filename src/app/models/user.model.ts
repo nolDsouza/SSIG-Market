@@ -1,10 +1,11 @@
 export interface User {
+  _id: string;
   email: string;
   username: string;
   firstname: string;
   lastname: string;
   balance: number;
-  accounts: string;
+  accounts: Array<string>;
   exp: number;
   iat: number;
 }

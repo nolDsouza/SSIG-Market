@@ -14,6 +14,7 @@ const router = express.Router();
 var usersRouter = require('./routes/users');
 var companiesRouter = require('./routes/companies');
 var accountsRouter = require('./routes/transaction_accounts');
+var transactionsRouter = require('./routes/transactions');
 
 // Connecting to middleware
 app.use(cors());
@@ -21,7 +22,8 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use('/', usersRouter);
 app.use('/companies', companiesRouter);
-app.use('/accounts', accountsRouter);
+app.use('/users/accounts', accountsRouter);
+app.use('/marketplace/transactions/', transactionsRouter);
 
 // Connect to the database
 mongoose.connect(process.env.__DATABASE__);

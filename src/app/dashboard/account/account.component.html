@@ -1,9 +1,16 @@
 <!-- MAIN CONTENT-->
 <main>
-  <div class="row-fluid d-flex justify-content-center mt-5 ml-5 mb-3">
-    <h2> Your name {{user.firstname + ' ' + user.lastname}} </h2>
-    <br>
-    <h3> Account name: {{accounts.name}}  Balance: {{accounts.balance}} </h3>
+  <div class="row-fluid mt-5 ml-5 mb-3">
+    <ul *ngFor="let i of accounts" class="list-group">
+      <li class="list-group-item"> <strong>Account name:</strong> {{i.name}}  <strong>Balance:</strong> {{i.balance}} </li>
+    </ul>
   </div>
-  <button (click)="onClick()" type="button" class="btn btn-outline-warning ml-3">Click me</button>
+  <div class="row-fluid d-flex justify-content-center">
+    <button *ngIf="!newAccountPending" (click)="openForm()" type="button" class="btn btn-outline-warning ml-3">+ open a new account</button>
+    <form *ngIf="newAccountPending" class="form-inline" [formGroup]="newAccountForm" (ngSubmit)="createAccount()">
+        <input class="form-control" formControlName="accountName" type="text" placeholder="account name">
+        <button type="submit" class="btn btn-outline-warning ml-1" [disabled]="!newAccountForm.valid">create</button>
+        <button (click)="closeForm()" type="button" class="btn btn-outline-danger ml-1">cancel</button>
+    </form>
+  </div>
 </main>

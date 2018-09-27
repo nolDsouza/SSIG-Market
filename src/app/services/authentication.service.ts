@@ -75,6 +75,21 @@ export class AuthenticationService {
     return null;
   }
 
+  /**
+   * Storing account information in the session because it is subject to change.
+   */
+  public getAccounts(): string[] {
+    // store in session if not available, (happens on first call)
+    if (sessionStorage.getItem('accounts') === null) {
+      this.setAccounts(this.getUser().accounts);
+    }
+    return JSON.parse(sessionStorage.getItem('accounts'));
+  }
+
+  public setAccounts(accounts: string[]): void {
+    sessionStorage.setItem('accounts', JSON.stringify(accounts));
+  }
+
   public loggedOn(): boolean {
     const user = this.getUser();
 

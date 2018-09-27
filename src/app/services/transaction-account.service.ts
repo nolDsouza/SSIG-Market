@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+export interface AccountBlueprint {
+  accountName: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +19,11 @@ export class TransactionAccountService {
   }
 
   getTransactionAccountById(id) {
-    return this.http.get(`${this.uri}/accounts/${id}`);
+    return this.http.get(`${this.uri}/users/accounts/${id}`);
+  }
+
+  createTransactionAccount(id, blueprint: AccountBlueprint) {
+    return this.http.post(`${this.uri}/users/accounts/create/${id}`, blueprint);
   }
 
   addTransactionAccount(name, owner, balance, shares, value, description) {
