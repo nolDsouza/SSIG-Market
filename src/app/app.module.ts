@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListComponent } from './components/list/list.component';
 import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './components/edit/edit.component';
+import { FAQComponent } from './faq/faq.component';
 
 import { TransactionAccountService } from './services/transaction-account.service';
 import { AuthGuardService } from './guards/auth-guard.service';
@@ -34,7 +35,8 @@ const routes: Routes = [
     RegisterComponent,
     ListComponent,
     CreateComponent,
-    EditComponent
+    EditComponent,
+    FAQComponent
   ],
   imports: [
     BrowserModule,
