@@ -14,6 +14,8 @@ export interface TokenPayload {
   username: string;
   firstname: string;
   lastname: string;
+  balance: number;
+  accounts: string;
   email: string;
   password: string;
 }
@@ -54,7 +56,10 @@ export class AuthenticationService {
 
     const req = base.pipe(map((data: TokenResponse) => {
       if (data.token) {
+        // Save the user data in local storage.
         this.saveToken(data.token);
+        // Save the accounts in session storage.
+        this.setAccounts(this.getUser().accounts);
       }
       return data;
     }));
@@ -73,6 +78,21 @@ export class AuthenticationService {
     return null;
   }
 
+  /**
+   * Storing account information in the session because it is subject to change.
+   */
+  public getAccounts(): string[] {
+    // Store in session if not available, (happens on first call).
+    if (sessionStorage.getItem('accounts') === null) {
+      this.setAccounts(this.getUser().accounts);
+    }
+    return JSON.parse(sessionStorage.getItem('accounts'));
+  }
+
+  public setAccounts(accounts: string[]): void {
+    sessionStorage.setItem('accounts', JSON.stringify(accounts));
+  }
+
   public loggedOn(): boolean {
     const user = this.getUser();
 
@@ -82,7 +102,7 @@ export class AuthenticationService {
     return user.exp > Date.now() / 1000;
   }
 
-  // Calling of the API
+  // Calling of the API.
   public register(userInfo: TokenPayload): Observable<any> {
     return this.request('post', 'register', userInfo);
   }

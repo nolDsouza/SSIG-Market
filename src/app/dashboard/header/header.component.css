@@ -1,0 +1,14 @@
+.navbar {
+  background: #2c2c2c;
+}
+
+#sidebarCollapse {
+    background: #2c2c2c;
+    font-size: 20px;
+    cursor: pointer;
+    margin: -2px 20px 0 0;
+    border-color: #2c2c2c;
+}
+
+
+

@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-sm" align="center">
+    <div class="card-main mb-3">
+      <div class="card-header" align="center">
+        <span class="card-title">Companies List</span>
+      </div>
+      <div class="card-body" align="center">
+       <form [formGroup]="companyForm">
+         <input class="form-control" id="myInput" type="text" placeholder="e.g. NAB or banking" formControlName="companyName">
+            <br>
+            <div class="scroll">
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Code</th>
+                  <th>Name</th>
+                  <th>Industry</th>
+                </tr>
+              </thead>
+              <tbody id="myTable">
+                <tr *ngFor="let company of companies | companyFilter: f.companyName.value">
+                  <td><a routerLink="/marketplace/{{company.asx_code}}">{{company.asx_code}}</a></td>
+                  <td><a routerLink="/marketplace/{{company.asx_code}}">{{company.name}}</a></td>
+                  <td>{{company.industry}}</td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+         </form>
+      </div>
+    </div>
+  </div>
+</div>

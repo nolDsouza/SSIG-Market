@@ -1,0 +1,68 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>{{user?.firstname + " " + user?.lastname | titlecase}} Share Summary</h1>
+      <br>
+      <div *ngIf="pipeline > summary">
+        <h2>{{company?.asx_code + ", "}}{{company?.name | titlecase}}</h2>
+          <br>
+          <h5>Industry: {{company?.industry}}</h5>
+          <br>
+          <h5>value: {{sharePrice | monetary}}</h5>
+          <br>
+      </div>
+  </div>
+</div>
+
+<form [formGroup]="sellForm" (ngSubmit)="sell()">
+  <div *ngIf="pipeline === summary" class="container">
+      <label class="my-1 mr-2">Account</label>
+      <p *ngIf="selected"> balance: {{(selected?.balance | monetary) || 0}} </p>
+      <select class="custom-select mb-2 mr-sm-2 mb-sm-0" formControlName="account">
+        <option selected [value]="-1">Chooose...</option>
+        <option *ngFor="let account of accounts; let i = index;" [value]="i">
+          {{account.name}}
+        </option>
+      </select>
+
+    <div *ngIf="selected && selected.shares">
+      <div *ngFor="let share of shares" class="card mt-5">
+        <div class="card-header">
+          {{share}}
+        </div>
+        <div class="card-body">
+          <p class="card-text">You own {{selected.shares[share]}} shares</p>
+          <button type="button" class="btn btn-primary" (click)="getSellForm(share)">Get current value</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="pipeline === details || pipeline === confirmation" class="container">
+    <label class="my-1 mr-2">Amount</label>
+    <input type="number" class="form-control mt-2 mb-2 mr-sm-2 mb-sm-0" min=0 max=99 formControlName="quantity">
+    <br>
+    <p *ngIf="selected">You own {{amount}} shares</p>
+    <p> total: {{(total | monetary) || 0}} </p>
+    <button *ngIf="pipeline === details" class="btn btn-primary mt-2" (click)="upPipeline()" [disabled]="!validated_input">Sell</button>
+    <button *ngIf="pipeline === details" class="btn btn-danger ml-2 mt-2" (click)="downPipeline()">Cancel</button>
+    <div *ngIf="pipeline === confirmation">
+      <p> are you sure? </p>
+      <button type="submit" class="btn btn-success mt-2">Yes</button>
+      <button  class="btn btn-danger ml-2 mt-2" (click)="downPipeline();downPipeline()">No</button>
+    </div>
+  </div>
+</form>
+
+
+<div *ngIf="pipeline === checkout" class="container">
+  <h2>Transaction Details</h2>
+  <p>Date Created: {{certificate?.dateCreated}}</p> 
+  <p>Transaction ID: {{certificate?._id}}</p> 
+  <p>User ID: {{certificate?.user_id}}</p> 
+  <p>ASX_code: {{certificate?.asx_code}}</p> 
+  <p>Price: {{certificate?.value | monetary}}</p> 
+  <p>Amount: {{-certificate?.amount}}</p> 
+  <p>Total: {{-certificate?.amount * certificate?.value | monetary}}</p> 
+  <button  class="btn btn-warning mt-2" routerLink="/dashboard">Back to Dashboard</button>
+  <button  class="btn btn-warning ml-2 mt-2">View Transaction History</button>
+</div>
