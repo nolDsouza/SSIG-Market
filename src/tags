@@ -1,0 +1,96 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Account	app/models/account.model.ts	/^export class Account {$/;"	c
+AccountBlueprint	app/services/transaction-account.service.ts	/^export interface AccountBlueprint {$/;"	i
+AccountComponent	app/dashboard/account/account.component.ts	/^export class AccountComponent implements OnInit {$/;"	c
+AppComponent	app/app.component.ts	/^export class AppComponent {$/;"	c
+AppModule	app/app.module.ts	/^export class AppModule { }$/;"	c
+AuthGuardService	app/guards/auth-guard.service.ts	/^export class AuthGuardService implements CanActivate {$/;"	c
+AuthenticationService	app/services/authentication.service.ts	/^export class AuthenticationService {$/;"	c
+AutoLoginService	app/guards/auto-login.service.ts	/^export class AutoLoginService {$/;"	c
+Company	app/models/company.model.ts	/^export interface Company {$/;"	i
+CompanyService	app/services/company.service.ts	/^export class CompanyService {$/;"	c
+CreateComponent	app/components/create/create.component.ts	/^export class CreateComponent implements OnInit {$/;"	c
+DashboardModule	app/dashboard/dashboard.module.ts	/^export class DashboardModule { }$/;"	c
+DashboardRoutingModule	app/dashboard/dashboard-routing.module.ts	/^export class DashboardRoutingModule { }$/;"	c
+EditComponent	app/components/edit/edit.component.ts	/^export class EditComponent implements OnInit {$/;"	c
+FooterComponent	app/dashboard/footer/footer.component.ts	/^export class FooterComponent implements OnInit {$/;"	c
+HeaderComponent	app/dashboard/header/header.component.ts	/^export class HeaderComponent implements OnInit {$/;"	c
+HomeComponent	app/dashboard/home/home.component.ts	/^export class HomeComponent implements OnInit {$/;"	c
+LayoutComponent	app/dashboard/layout/layout.component.ts	/^export class LayoutComponent implements OnInit {$/;"	c
+ListComponent	app/components/list/list.component.ts	/^export class ListComponent implements OnInit {$/;"	c
+LoginComponent	app/components/login/login.component.ts	/^export class LoginComponent implements OnInit {$/;"	c
+MonetaryPipe	app/dashboard/pipes/monetary.pipe.ts	/^export class MonetaryPipe extends CurrencyPipe implements PipeTransform {$/;"	c
+RegisterComponent	app/components/register/register.component.ts	/^export class RegisterComponent implements OnInit {$/;"	c
+ShareService	app/services/share.service.ts	/^export class ShareService {$/;"	c
+ShareSummaryComponent	app/dashboard/share-summary/share-summary.component.ts	/^export class ShareSummaryComponent implements OnInit {$/;"	c
+SharedModule	app/shared/shared.module.ts	/^export class SharedModule { }$/;"	c
+TokenPayload	app/services/authentication.service.ts	/^export interface TokenPayload {$/;"	i
+TokenResponse	app/services/authentication.service.ts	/^interface TokenResponse {$/;"	i
+ToolbarComponent	app/dashboard/toolbar/toolbar.component.ts	/^export class ToolbarComponent implements OnInit {$/;"	c
+TransactionAccountService	app/services/transaction-account.service.ts	/^export class TransactionAccountService {$/;"	c
+TransferComponent	app/dashboard/transfer/transfer.component.ts	/^export class TransferComponent implements OnInit, OnChanges {$/;"	c
+TransferDirective	app/directives/transfer.directive.ts	/^export class TransferDirective {$/;"	c
+User	app/models/user.model.ts	/^export interface User {$/;"	i
+UserService	app/services/user.service.ts	/^export class UserService {$/;"	c
+acc	app/dashboard/transfer/transfer.component.ts	/^    private acc: TransactionAccountService,$/;"	m
+accService	app/dashboard/account/account.component.ts	/^    private accService: TransactionAccountService$/;"	m
+activeRoute	app/dashboard/share-summary/share-summary.component.ts	/^    private activeRoute: ActivatedRoute,$/;"	m
+auth	app/components/login/login.component.ts	/^    private auth: AuthenticationService,$/;"	m
+auth	app/components/register/register.component.ts	/^    private auth: AuthenticationService,$/;"	m
+auth	app/dashboard/account/account.component.ts	/^    private auth: AuthenticationService,$/;"	m
+autoWatch	karma.conf.js	/^    autoWatch: true,$/;"	r
+balance	app/models/account.model.ts	/^  private balance: number;$/;"	m
+basePath	karma.conf.js	/^    basePath: '',$/;"	r
+browsers	karma.conf.js	/^    browsers: ['Chrome'],$/;"	r
+buyForm	app/dashboard/share-summary/share-summary.component.ts	/^  private buyForm: FormGroup;$/;"	m
+clearContext	karma.conf.js	/^      clearContext: false \/\/ leave Jasmine Spec Runner output visible in browser$/;"	r
+client	karma.conf.js	/^    client: {$/;"	r
+colors	karma.conf.js	/^    colors: true,$/;"	r
+company	app/dashboard/share-summary/share-summary.component.ts	/^  private company: Company;$/;"	m
+companySearch	app/dashboard/header/header.component.ts	/^    private companySearch: CompanyService,$/;"	m
+companySearch	app/dashboard/share-summary/share-summary.component.ts	/^    private companySearch: CompanyService,$/;"	m
+coverageIstanbulReporter	karma.conf.js	/^    coverageIstanbulReporter: {$/;"	r
+dashboard	app/services/authentication.service.ts	/^  public dashboard(): Observable<any> {$/;"	m
+dir	karma.conf.js	/^      dir: require('path').join(__dirname, '..\/coverage'),$/;"	r
+environment	environments/environment.prod.ts	/^export const environment = {$/;"	v
+environment	environments/environment.ts	/^export const environment = {$/;"	v
+exports	karma.conf.js	/^module.exports = function (config) {$/;"	r
+fixWebpackSourcePaths	karma.conf.js	/^      fixWebpackSourcePaths: true$/;"	r
+formBuilder	app/components/login/login.component.ts	/^    private formBuilder: FormBuilder,$/;"	m
+formBuilder	app/components/register/register.component.ts	/^    private formBuilder: FormBuilder,$/;"	m
+formBuilder	app/dashboard/account/account.component.ts	/^    private formBuilder: FormBuilder,$/;"	m
+formBuilder	app/dashboard/header/header.component.ts	/^    private formBuilder: FormBuilder,$/;"	m
+formBuilder	app/dashboard/share-summary/share-summary.component.ts	/^    private formBuilder: FormBuilder,$/;"	m
+formBuilder	app/dashboard/transfer/transfer.component.ts	/^    private formBuilder: FormBuilder,$/;"	m
+frameworks	karma.conf.js	/^    frameworks: ['jasmine', '@angular-devkit\/build-angular'],$/;"	r
+getAccounts	app/services/authentication.service.ts	/^  public getAccounts(): string[] {$/;"	m
+getToken	app/services/authentication.service.ts	/^  private getToken(): string {$/;"	m
+getUser	app/services/authentication.service.ts	/^  public getUser(): User {$/;"	m
+http	app/services/authentication.service.ts	/^    private http: HttpClient,$/;"	m
+logLevel	karma.conf.js	/^    logLevel: config.LOG_INFO,$/;"	r
+loggedOn	app/services/authentication.service.ts	/^  public loggedOn(): boolean {$/;"	m
+login	app/services/authentication.service.ts	/^  public login(userInfo: TokenPayload): Observable<any> {$/;"	m
+logout	app/dashboard/header/header.component.ts	/^  public logout() {$/;"	m
+plugins	karma.conf.js	/^    plugins: [$/;"	r
+port	karma.conf.js	/^    port: 9876,$/;"	r
+register	app/services/authentication.service.ts	/^  public register(userInfo: TokenPayload): Observable<any> {$/;"	m
+reporters	karma.conf.js	/^    reporters: ['progress', 'kjhtml'],$/;"	r
+reports	karma.conf.js	/^      reports: ['html', 'lcovonly'],$/;"	r
+request	app/services/authentication.service.ts	/^  private request(method: 'post'|'get', type: 'login'|'register'|'dashboard',$/;"	m
+router	app/components/login/login.component.ts	/^    private router: Router) { }$/;"	m
+router	app/components/register/register.component.ts	/^    private router: Router) { }$/;"	m
+router	app/dashboard/header/header.component.ts	/^    private router: Router) { }$/;"	m
+router	app/dashboard/share-summary/share-summary.component.ts	/^    private router: Router,$/;"	m
+router	app/services/authentication.service.ts	/^    private router: Router) { }$/;"	m
+saveToken	app/services/authentication.service.ts	/^  private saveToken(token: string): void {$/;"	m
+setAccounts	app/services/authentication.service.ts	/^  public setAccounts(accounts: string[]): void {$/;"	m
+share	app/dashboard/share-summary/share-summary.component.ts	/^    private share: ShareService,$/;"	m
+sharePrice	app/dashboard/share-summary/share-summary.component.ts	/^  private sharePrice: number;$/;"	m
+shares	app/models/account.model.ts	/^  private shares: Array<string>;$/;"	m
+singleRun	karma.conf.js	/^    singleRun: false$/;"	r
+token	app/services/authentication.service.ts	/^  private token: string;$/;"	m

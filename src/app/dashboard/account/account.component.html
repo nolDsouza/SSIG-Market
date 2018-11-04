@@ -1,0 +1,26 @@
+<div class="row mt-5">
+  <div class="col-sm" align="center">
+    <ul *ngFor="let account of accounts" class="list-group">
+      <li class="list-group-item"> 
+        <strong>Account name:</strong> {{account.name}}  
+        <br>
+        <strong>Balance:</strong> {{account.balance | monetary}}
+        <span class="float-right">
+          <button *ngIf="account.name !== 'default' && account.balance === 0" 
+            type="button" class="btn btn-danger" (click)="deleteAccount(account._id)">
+            Delete
+          </button>
+        </span>
+      </li>
+      <br>
+    </ul>
+    <button type="button" class="btn btn-warning ml-3" routerLink="/transfer"><i class="fa-share"></i> Transfer</button>
+    <button *ngIf="!newAccountPending" (click)="openForm()" type="button" class="btn btn-warning ml-3">+ open a new account</button>
+    <form *ngIf="newAccountPending" class="mt-5" [formGroup]="newAccountForm" (ngSubmit)="createAccount()">
+        <input class="form-control" formControlName="accountName" type="text" placeholder="account name">
+        <br>
+        <button type="submit" class="btn btn-warning ml-1" [disabled]="!newAccountForm.valid">create</button>
+        <button (click)="closeForm()" type="button" class="btn btn-danger ml-1">cancel</button>
+    </form>
+  </div>
+</div>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { TransactionAccountService } from '../../transaction-account.service';
 
-import { AuthenticationService } from '../../authentication.service';
 import { User } from '../../models/user.model';
+import { TransactionAccountService } from '../../services/transaction-account.service';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-list',
@@ -10,13 +10,13 @@ import { User } from '../../models/user.model';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  user: User;
+  details: User;
 
   constructor(private auth: AuthenticationService) { }
 
    ngOnInit() {
     this.auth.dashboard().subscribe(user => {
-      this.user = user;
+      this.details = user;
     }, (err) => {
       console.error(err);
     });

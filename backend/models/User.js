@@ -21,12 +21,13 @@ let User = new Schema({
   firstname: {
     type: String,
     required: true,
-    index: { unique: true }
   },
   lastname: {
     type: String,
     required: true,
-    index: { unique: true }
+  },
+  accounts: {
+    type: [{ type: Schema.Types.ObjectId, ref: 'Account' }]
   },
   password: {
     type: String,
@@ -71,6 +72,8 @@ User.methods.generateJWT = function() {
     email: this.email,
     firstname: this.firstname,
     lastname: this.lastname,
+    balance: this.balance,
+    accounts: this.accounts,
     exp: parseInt(expiry.getTime() / 1000),
   }, API_KEY);
 }

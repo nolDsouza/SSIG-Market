@@ -1,0 +1,22 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>{{user?.firstname + " " + user?.lastname | titlecase}} Transaction History</h1>
+    <button type="button" class="mt-5 mr-2 btn btn-primary btn-lg" (click)="sold = !sold" [disabled]="sold">Bought</button>
+    <button type="button" class="mt-5 btn btn-dark btn-lg" (click)="sold = !sold" [disabled]="!sold">Sold</button>
+  </div>
+</div>
+
+<div class="container">
+
+      <div *ngFor="let transaction of transactions" class="card mt-5">
+        <div class="card-header">
+          {{transaction.dateCreated | date}}
+        </div>
+        <div class="card-body">
+          <p class="card-text">Transaction id: {{transaction._id}}</p>
+          <p class="card-text">ASX code: {{transaction.asx_code}}</p>
+          <p class="card-text">Price: {{transaction.value | monetary}}</p>
+          <p class="card-text">Amount: {{transaction.amount | abs}}</p>
+        </div>
+      </div>
+</div>

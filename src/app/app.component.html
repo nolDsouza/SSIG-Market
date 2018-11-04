@@ -1,6 +1,13 @@
-<mat-toolbar>
-  <span>Sharelion</span>
-</mat-toolbar>
-<div>
-  <router-outlet></router-outlet>
-</div>
+<!DOCTYPE html>
+<app-header *ngIf="this.auth.getUser()"></app-header>
+      <!-- sidenav content -->
+      <app-toolbar *ngIf="this.auth.getUser()"></app-toolbar>
+      <div class="container-fluid">
+        <!-- main content -->
+        <router-outlet></router-outlet>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+<app-footer *ngIf="this.auth.getUser()"></app-footer>

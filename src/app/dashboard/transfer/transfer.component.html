@@ -1,0 +1,68 @@
+<div class="row-fluid mt-5 ml-5 mb-3">
+  <div class="row-fluid d-flex justify-content-center mt-5 ml-5 mb-3">
+    <form [formGroup]="transferForm" (ngSubmit)="transfer()">
+      <div class="card">
+        <div class="card-header">
+          From
+        </div>
+        <div class="card-body">
+          <select class="form-control" formControlName="sourceAccount">
+            <option value="">-- not selected --</option>
+            <option *ngFor="let account of accounts; let i = index;" [value]="i">
+              {{account.name}}
+            </option>
+          </select>
+          <br>
+          <p class="card-text">Balance: 
+          <span class="float-right">{{source?.balance | monetary}}</span>
+          </p>
+        </div>
+      </div>
+      <br>
+      <div class="card">
+        <div class="card-header">
+          To
+        </div>
+        <div class="card-body">
+          <select *ngIf="f.sourceAccount.valid" class="form-control" formControlName="destAccount">
+            <option value="">-- not selected --</option>
+            <option *ngFor="let option of options; let i = index;" [value]="i">
+              {{option.name}}
+            </option>
+          </select>
+          <br>
+          <p class="card-text">Balance: 
+            <span class="float-right">{{dest?.balance | monetary}}</span>
+          </p>
+        </div>
+      </div>
+      <br>
+      <div class="card">
+        <div class="card-header">
+          Amount
+        </div>
+        <div class="card-body">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            <input type="number" class="form-control" min=0 formControlName="dollars">
+            <div class="input-group-append">
+              <span class="input-group-text">.</span>
+              <input type="number" class="input-group-text cents" min=0 max=99 formControlName="cents">
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div *ngIf="warnings" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Please make sure all fields are filled!</strong>
+        <button type="button" class="close" data-dismiss="alert" (click)="close()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <br>
+      <button type="submit" class="btn btn-danger" [disabled]="!transferForm.valid">Transfer</button>
+    </form>
+  </div>
+</div>
