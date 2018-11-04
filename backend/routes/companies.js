@@ -1,19 +1,19 @@
-import express from 'express';
+import express from 'express'
 
 // express router middleware
-const router = express.Router();
+const router = express.Router()
 
 // require controllers
-const CompanyController = require('../controllers/company.controller');
+const CompanyController = require('../controllers/company.controller')
 
-// Company ROUTES 
+// Company ROUTES
 
 // POST request for registering a new company
-router.post('/create', CompanyController.create); 
+router.post('/create', CompanyController.create)
 
 // GET request for retrieving list of companies
-router.get('/list', CompanyController.read);
+router.get('/', CompanyController.read)
 
-router.get('/search/:id', CompanyController.search);
+router.get('/:id', CompanyController.search)
 
-module.exports = router;
+module.exports = router

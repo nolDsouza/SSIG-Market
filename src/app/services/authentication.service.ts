@@ -56,7 +56,10 @@ export class AuthenticationService {
 
     const req = base.pipe(map((data: TokenResponse) => {
       if (data.token) {
+        // Save the user data in local storage.
         this.saveToken(data.token);
+        // Save the accounts in session storage.
+        this.setAccounts(this.getUser().accounts);
       }
       return data;
     }));
@@ -79,7 +82,7 @@ export class AuthenticationService {
    * Storing account information in the session because it is subject to change.
    */
   public getAccounts(): string[] {
-    // store in session if not available, (happens on first call)
+    // Store in session if not available, (happens on first call).
     if (sessionStorage.getItem('accounts') === null) {
       this.setAccounts(this.getUser().accounts);
     }
@@ -99,7 +102,7 @@ export class AuthenticationService {
     return user.exp > Date.now() / 1000;
   }
 
-  // Calling of the API
+  // Calling of the API.
   public register(userInfo: TokenPayload): Observable<any> {
     return this.request('post', 'register', userInfo);
   }

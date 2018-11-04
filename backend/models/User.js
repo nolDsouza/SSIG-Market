@@ -27,7 +27,7 @@ let User = new Schema({
     required: true,
   },
   accounts: {
-    type: Array
+    type: [{ type: Schema.Types.ObjectId, ref: 'Account' }]
   },
   password: {
     type: String,

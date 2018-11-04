@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Transaction } from '../models/transaction.model';
 
 export interface AccountBlueprint {
   accountName: string;
@@ -18,39 +19,33 @@ export class TransactionAccountService {
     return this.http.get(`${this.uri}/transaction_accounts`);
   }
 
-  getTransactionAccountById(id) {
-    return this.http.get(`${this.uri}/users/accounts/${id}`);
+  getUserAccounts(identifiers: string[]) {
+    const accounts = identifiers.join(';');
+    return this.http.get(`${this.uri}/users/accounts/${accounts}`);
   }
 
   createTransactionAccount(id, blueprint: AccountBlueprint) {
     return this.http.post(`${this.uri}/users/accounts/create/${id}`, blueprint);
   }
 
-  addTransactionAccount(name, owner, balance, shares, value, description) {
-    const transAcct = {
-      name: name,
-      owner: owner,
-      balance: balance,
-      shares: shares,
-      value: value,
-      description: description
-    };
-    return this.http.post(`${this.uri}/transaction_accounts/add`, transAcct);
+  update(id, changes) {
+    console.log(changes);
+    return this.http.patch(`${this.uri}/users/accounts/${id}`, changes)
+      .toPromise();
   }
 
-  updateTransactionAccount(id, name, owner, balance, shares, value, description) {
-    const transAcct = {
-      name: name,
-      owner: owner,
-      balance: balance,
-      shares: shares,
-      value: value,
-      description: description
-    };
-    return this.http.post(`${this.uri}/transaction_accounts/update/${id}`, transAcct);
+  postTransaction(transaction: Transaction) {
+    return this.http.post(`${this.uri}/marketplace/transactions`, transaction)
+      .toPromise();
   }
 
-  deleteTransactionAccount(id) {
-    return this.http.get(`${this.uri}/transaction_accounts/delete/${id}`);
+  getTransactions(id) {
+    return this.http.get(`${this.uri}/marketplace/transactions/${id}`, id)
+      .toPromise();
+  }
+
+  delete(id) {
+    return this.http.delete(`${this.uri}/users/accounts/${id}`)
+      .toPromise();
   }
 }

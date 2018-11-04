@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
-const Schema = mongoose.Schema;
+const Schema = mongoose.Schema
 
 let Transaction = new Schema({
   user_id: {
@@ -19,11 +19,10 @@ let Transaction = new Schema({
     type: Number,
     required: true
   },
-  dateCreated: { 
-    type: Date, 
-    default: Date.now 
+  dateCreated: {
+    type: Date,
+    default: Date.now
   }
-});
+})
 
-
-export default mongoose.model('Transaction', Transaction);
+export default mongoose.model('Transaction', Transaction)

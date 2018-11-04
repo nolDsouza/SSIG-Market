@@ -1,0 +1,14 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+auth	users.js	/^router.get('\/dashboard', auth, UserController.dashboard);$/;"	r
+auth	users.js	/^var auth = jwt({$/;"	r
+exports	companies.js	/^module.exports = router;$/;"	r
+exports	transaction_accounts.js	/^module.exports = router;$/;"	r
+exports	transactions.js	/^module.exports = router;$/;"	r
+exports	users.js	/^module.exports = router;$/;"	r
+secret	users.js	/^  secret: process.env.__SECRET__,$/;"	r
+userProperty	users.js	/^  userProperty: 'payload'$/;"	r

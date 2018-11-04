@@ -1,16 +1,26 @@
-<!-- MAIN CONTENT-->
-<main>
-  <div class="row-fluid mt-5 ml-5 mb-3">
-    <ul *ngFor="let i of accounts" class="list-group">
-      <li class="list-group-item"> <strong>Account name:</strong> {{i.name}}  <strong>Balance:</strong> {{i.balance}} </li>
+<div class="row mt-5">
+  <div class="col-sm" align="center">
+    <ul *ngFor="let account of accounts" class="list-group">
+      <li class="list-group-item"> 
+        <strong>Account name:</strong> {{account.name}}  
+        <br>
+        <strong>Balance:</strong> {{account.balance | monetary}}
+        <span class="float-right">
+          <button *ngIf="account.name !== 'default' && account.balance === 0" 
+            type="button" class="btn btn-danger" (click)="deleteAccount(account._id)">
+            Delete
+          </button>
+        </span>
+      </li>
+      <br>
     </ul>
-  </div>
-  <div class="row-fluid d-flex justify-content-center">
-    <button *ngIf="!newAccountPending" (click)="openForm()" type="button" class="btn btn-outline-warning ml-3">+ open a new account</button>
-    <form *ngIf="newAccountPending" class="form-inline" [formGroup]="newAccountForm" (ngSubmit)="createAccount()">
+    <button type="button" class="btn btn-warning ml-3" routerLink="/transfer"><i class="fa-share"></i> Transfer</button>
+    <button *ngIf="!newAccountPending" (click)="openForm()" type="button" class="btn btn-warning ml-3">+ open a new account</button>
+    <form *ngIf="newAccountPending" class="mt-5" [formGroup]="newAccountForm" (ngSubmit)="createAccount()">
         <input class="form-control" formControlName="accountName" type="text" placeholder="account name">
-        <button type="submit" class="btn btn-outline-warning ml-1" [disabled]="!newAccountForm.valid">create</button>
-        <button (click)="closeForm()" type="button" class="btn btn-outline-danger ml-1">cancel</button>
+        <br>
+        <button type="submit" class="btn btn-warning ml-1" [disabled]="!newAccountForm.valid">create</button>
+        <button (click)="closeForm()" type="button" class="btn btn-danger ml-1">cancel</button>
     </form>
   </div>
-</main>
+</div>

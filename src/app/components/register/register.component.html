@@ -39,9 +39,9 @@
           <div class="input-wrapper">
             <input type="password" formControlName="password" class="register-input" placeholder="Password" [ngClass]="{ 'is-form': submitted && f.password.errors }" #password/>
           </div>
-	  <div *ngIf="submitted && password.value !== passwordconfirm.value">Passwords don't match</div>
-	  <div class="input-wrapper">
-            <input type="password" formControlName="passwordconfirm" class="register-input" placeholder="Confirm Password" [ngClass]="{ 'is-form': submitted }" #passwordconfirm/>
+          <div *ngIf="submitted && f.password.value !== f.passwordConfirm.value" class="form-feeback">Passwords don't match</div>
+          <div class="input-wrapper">
+            <input type="password" formControlName="passwordConfirm" class="register-input" placeholder="Confirm Password" [ngClass]="{ 'is-form': submitted }" #passwordconfirm/>
           </div>
           <div class="register-submit">
 						<button [disabled]="false" type="submit" class="register-btn">

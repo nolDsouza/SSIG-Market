@@ -13,6 +13,19 @@ import { HomeComponent } from './home/home.component';
 import { ShareSummaryComponent } from './share-summary/share-summary.component';
 import { AccountComponent } from './account/account.component';
 
+import { TransferDirective } from '../directives/transfer.directive';
+import { TransferComponent } from './transfer/transfer.component';
+import { MonetaryPipe } from './pipes/monetary.pipe';
+import { MarketplaceComponent } from './marketplace/marketplace.component';
+import { ChatComponent } from './chat/chat.component';
+import { HistoryComponent } from './history/history.component';
+import { AbsPipe } from './pipes/abs.pipe';
+import { GraphComponent } from './graph/graph.component';
+import { CompaniesComponent } from './companies/companies.component';
+import { CompanyFilterPipe } from './pipes/company-filter.pipe';
+import { AboutComponent } from './about/about.component';
+import { FaqComponent } from './faq/faq.component';
+
 @NgModule({
   imports: [
     DashboardRoutingModule,
@@ -28,6 +41,18 @@ import { AccountComponent } from './account/account.component';
     HomeComponent,
     ShareSummaryComponent,
     AccountComponent,
+    TransferDirective,
+    TransferComponent,
+    MonetaryPipe,
+    MarketplaceComponent,
+    ChatComponent,
+    HistoryComponent,
+    AbsPipe,
+    GraphComponent,
+    CompaniesComponent,
+    CompanyFilterPipe,
+    AboutComponent,
+    FaqComponent,
   ],
   exports: [
     HeaderComponent,

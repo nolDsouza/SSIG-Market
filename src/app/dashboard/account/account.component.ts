@@ -6,6 +6,8 @@ import { Account } from '../../models/account.model';
 import { AuthenticationService } from '../../services/authentication.service';
 import { AccountBlueprint, TransactionAccountService } from '../../services/transaction-account.service';
 
+import { TransferComponent } from '../transfer/transfer.component';
+
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -23,7 +25,6 @@ export class AccountComponent implements OnInit {
     private auth: AuthenticationService,
     private accService: TransactionAccountService
   ) {
-    this.accounts = [];
   }
 
 
@@ -34,17 +35,9 @@ export class AccountComponent implements OnInit {
       accountName: ['', [Validators.required, Validators.minLength(3)]]
     });
 
-    //    const _id = this.auth.getUser().accounts.pop();
-    for (const _id of this.auth.getAccounts()) {
-      // subscribe to get request as it is not returned immediately.
-      this.accService.getTransactionAccountById(_id).subscribe((res) => {
-          this.accounts.push(res as Account);
-        },
-          err => {
-          console.log(err);
-        }
-      );
-    }
+    this.accService.getUserAccounts(this.auth.getAccounts()).subscribe(accounts => {
+      this.accounts = accounts as Array<Account>;
+    });
   }
 
   openForm() {
@@ -65,6 +58,11 @@ export class AccountComponent implements OnInit {
         console.log('debug2', err);
       }
     );
+  }
+
+  async deleteAccount(id) {
+    await this.accService.delete(id);
+    location.reload();
   }
 
 }

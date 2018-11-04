@@ -6,14 +6,14 @@ module.exports.create = function(req, res) {
     name: req.body.accountName, 
     balance: 0 
   }); 
-  // Get the correct user so it's list of accounts can be accessed
+  // Get the correct user so it's list of accounts can be accessed.
   User.findById(req.params.id, (err, user) => {
     if (err || !user) res.status(404).json(err);
     else {
-      // add new account to database
+      // Add new account to database.
       newAccount.save((err, account) => {
         if (err) return res.status(404).json(err);
-        // add account ref to user update
+        // Add account ref to user update.
         console.log(user);
         user.accounts.push(account.id);
         user.save().then(success => {
@@ -26,21 +26,33 @@ module.exports.create = function(req, res) {
   });
 };
 
-module.exports.update = function(req, res) {
-  User.findById(req.params.id, (err, user) => {
-    if (!user)
-      return next(new Error('Could not load document'));
+/**
+ * Update all ennummerable properties of an account based on the body
+ * parameters defined in the request. (It should only be used to modify the 
+ * name or the balance, but that may change in a future date).
+ */
+module.exports.update = function(req, callback) {
+  TransactionAccount.findById(req.params.id, (err, account) => {
+    if (err)
+      res.status(400).json(err);
     else {
-      user = new User(req);
-      user.save().then(user => {
-        res.json('Update done'); 
-      }).catch(err=> {
-        res.status(400).send('Update failed'); 
+      // Assign values from source to dest.
+      Object.assign(account, req.body);
+      account.save().then(res => {
+        callback.json(res); 
+      }).catch(err => {
+        callback.status(400).send('Update failed'); 
       });
     }
   });
 };
 
+/**
+ * Returns a total list of all account objects including the number of shares
+ * they own. The number of shares is an object. This request is not expected to
+ * be used outside of testing as some documents in the collection may be very 
+ * larege.
+ */
 module.exports.list = (req, res) => {
   TransactionAccount.find((err, transaction_accounts) => {
   if (err)
@@ -50,12 +62,21 @@ module.exports.list = (req, res) => {
   });
 };
 
+/**
+ * Returns the a list of account objects, including the number of shares they
+ * own. Parameters of the http request are expected to be account ids seperated
+ * by a semi-colon.
+ */
 module.exports.get = (req, res) => {
-  TransactionAccount.findById(req.params.id, (err, transaction_account) => {
+  // The query is a mongoDB type query similar to SQL IN statement.
+  TransactionAccount.find({
+    // The id parameter is an array of ids, including the singular request
+    '_id' : req.params.id.split(';')
+  }, (err, accounts) => {
     if (err)
       console.log(err);
     else
-      res.json(transaction_account);
+      res.json(accounts);
   });
 };
 
@@ -70,27 +91,6 @@ module.exports.get = (req, res) => {
       res.status(400).send('Failed to create new record'); 
     });
 };*/
-
-module.exports.update = (req, res)=> {
-  TransactionAccount.findById(req.params.id, (err, transaction_account) => {
-    if (!transaction_account)
-      return next(new Error('Could not load document'));
-    else {
-      transaction_account.name = req.body.name;
-      transaction_account.owner = req.body.owner;
-      transaction_account.balance = req.body.balance;
-      transaction_account.shares = req.body.shares;
-      transaction_account.value = req.body.value;
-      transaction_account.description = req.body.description;
-
-      transaction_account.save().then(transaction_account=> {
-        res.json('Update done'); 
-      }).catch(err=> {
-        res.status(400).send('Update failed'); 
-      });
-    }
-  });
-};
 
 module.exports.delete = (req, res)=> {
   // get and delete the account, it is returned as a callback

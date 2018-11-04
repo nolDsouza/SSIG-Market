@@ -15,6 +15,6 @@ export class CompanyService {
   }
 
   getCompanyByKeyword(key) {
-    return this.http.get(`${this.uri}/companies/search/${key}`);
+    return this.http.get(`${this.uri}/companies/${key}`);
   }
 }

@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 const init_name = 'default';
-const init_value = 1000000;
+const init_value = 100000000;
 
 let TransactionAccount = new Schema({
   name: {
